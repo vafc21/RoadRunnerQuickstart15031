@@ -27,6 +27,7 @@ import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
+import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
@@ -74,6 +75,7 @@ public class SampleMecanumDrive extends MecanumDrive {
     private DcMotorEx leftFront, leftRear, rightRear, rightFront;
     private List<DcMotorEx> motors;
 
+    double DConstant = 1;
     private IMU imu;
     private VoltageSensor batteryVoltageSensor;
 
@@ -283,6 +285,24 @@ public class SampleMecanumDrive extends MecanumDrive {
         return wheelVelocities;
     }
 
+    public void drive(double turn, double drive, double rotate, float smallRotationLeft, float smallRotationRight) {
+        if (smallRotationRight > 0.01){
+            rotate += smallRotationRight*0.5;
+
+        }else if (smallRotationLeft > 0.01){
+            rotate -= smallRotationLeft*0.5;
+        }
+
+        double BLpower = DConstant * Range.clip(-drive - turn + rotate, -1.0, 1.0);
+        double FLpower = DConstant * Range.clip(drive - turn - rotate, -1.0, 1.0);
+        double FRpower = DConstant * Range.clip(drive + turn + rotate, -1.0, 1.0);
+        double BRpower = DConstant * Range.clip(-drive + turn - rotate, -1.0, 1.0);
+
+        leftFront.setPower(FLpower);
+        leftRear.setPower(BLpower);
+        rightRear.setPower(BRpower);
+        rightFront.setPower(FRpower);
+    }
     @Override
     public void setMotorPowers(double v, double v1, double v2, double v3) {
         leftFront.setPower(v);
