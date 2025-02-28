@@ -49,6 +49,23 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="configure_robot_menu_item">Configure Robot</string>
   <string name="about_menu_item">About</string>
   <string name="exit_menu_item">Exit</string>
+  <string name="pref_rc_connected">RC Connected</string>
+  <string name="pref_warn_about_2_4_ghz_band">Warn about 2.4GHz band</string>
+  <string name="pref_warn_about_obsolete_software">Warn about obsolete software</string>
+  <string name="pref_warn_about_mismatched_app_versions">Warn about mismatched app versions</string>
+  <string name="pref_warn_about_incorrect_clocks">Warn about incorrect clocks</string>
+  <string name="pref_wifi_automute">WiFi AutoMute</string>
+  <string name="pref_pairing_kind">Pairing Kind</string>
+  <string name="toastRobotSetupComplete">Robot Setup Complete</string>
+  <string name="toastRestartRobotComplete">Restart Robot Complete</string>
+  <string name="pref_app_theme">App Theme</string>
+  <string name="appThemeChangeRestartNotifyRC">App Theme Change Requires Restart</string>
+  <string name="permRcWriteExternalStorageExplain">Explain why RC needs Write External Storage</string>
+  <string name="permRcReadExternalStorageExplain">Explain why RC needs Read External Storage</string>
+  <string name="permRcCameraExplain">Explain why RC needs Camera Access</string>
+  <string name="permAccessLocationExplain">Explain why RC needs Location Access</string>
+  <string name="permReadPhoneState">Explain why RC needs to Read Phone State</string>
+  <string name="permGenericExplain">General permission explanation</string>
 
   <!-- Toast messages -->
   <string name="toastWifiConfigurationComplete">Configuration Complete</string>

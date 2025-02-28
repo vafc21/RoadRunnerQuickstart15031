@@ -285,30 +285,30 @@ public class SampleMecanumDrive extends MecanumDrive {
         return wheelVelocities;
     }
 
-    public void drive(double turn, double drive, double rotate, float smallRotationLeft, float smallRotationRight) {
-        if (smallRotationRight > 0.01){
-            rotate += smallRotationRight*0.5;
-
-        }else if (smallRotationLeft > 0.01){
-            rotate -= smallRotationLeft*0.5;
-        }
-
-        double BLpower = DConstant * Range.clip(-drive - turn + rotate, -1.0, 1.0);
-        double FLpower = DConstant * Range.clip(drive - turn - rotate, -1.0, 1.0);
-        double FRpower = DConstant * Range.clip(drive + turn + rotate, -1.0, 1.0);
-        double BRpower = DConstant * Range.clip(-drive + turn - rotate, -1.0, 1.0);
-
+//    public void drive(double turn, double drive, double rotate, float smallRotationLeft, float smallRotationRight) {
+//        if (smallRotationRight > 0.01){
+//            rotate += smallRotationRight*0.5;
+//
+//        }else if (smallRotationLeft > 0.01){
+//            rotate -= smallRotationLeft*0.5;
+//        }
+//
+//        double BLpower = DConstant * Range.clip(-drive - turn + rotate, -1.0, 1.0);
+//        double FLpower = DConstant * Range.clip(drive - turn - rotate, -1.0, 1.0);
+//        double FRpower = DConstant * Range.clip(drive + turn + rotate, -1.0, 1.0);
+//        double BRpower = DConstant * Range.clip(-drive + turn - rotate, -1.0, 1.0);
+//
+//        leftFront.setPower(FLpower);
+//        leftRear.setPower(BLpower);
+//        rightRear.setPower(BRpower);
+//        rightFront.setPower(FRpower);
+//    }
+    @Override
+    public void setMotorPowers(double FLpower, double BLpower, double BRpower, double FRpower) {
         leftFront.setPower(FLpower);
         leftRear.setPower(BLpower);
         rightRear.setPower(BRpower);
         rightFront.setPower(FRpower);
-    }
-    @Override
-    public void setMotorPowers(double v, double v1, double v2, double v3) {
-        leftFront.setPower(v);
-        leftRear.setPower(v1);
-        rightRear.setPower(v2);
-        rightFront.setPower(v3);
     }
 
     @Override
